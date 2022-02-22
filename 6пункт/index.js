@@ -36,3 +36,4 @@ const getNumberOfDays = () => {
 }
 
 getNumberOfDays()
+
