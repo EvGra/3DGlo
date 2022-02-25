@@ -14,8 +14,8 @@ const reg = () => {
 
   const connectIputMail = document.querySelector('.connect .form-email')
   const connectIputPhone = document.querySelector('.connect .form-phone')
-  const connectIputName = document.querySelector('.connect .top-form')
-  const connectIputMes = document.querySelector('.connect .form-message')
+  const connectIputName = document.querySelector('#form2-name')
+  const connectIputMes = document.querySelector('#form2-message')
   const connectForm = document.querySelector('#form2')
 
 
@@ -30,22 +30,25 @@ const reg = () => {
     e.preventDefault()
     let isError = false
 
-    if (!/[а-яА-Я-\s]/g.test(mainIputText.value)) {
-      alert('неправильные данные')
+    if (!/[^а-яА-Я\-\s]/g.test(mainIputText.value)) {
     } else {
       isError = true
+      alert('неправильные данные')
+      console.log('1');
     }
     
-    if(!/[^\w-".!~*']/g.test(mainIputMail.value)) {
-      alert('неправильные данные')
+    if(!/[^\w\-\"\.\!\~\*\'\@]/g.test(mainIputMail.value)) {
     } else {
       isError = true
+      alert('неправильные данные')
+      console.log('2');
     }
 
-    if(!/[\d]/g.test(mainIputPhone.value)) {
-      alert('неправильные данные')
+    if(!/[^\d\(\)\-]/g.test(mainIputPhone.value)) {
     } else {
       isError = true
+      alert('неправильные данные')
+      console.log(3);
     }
   })
 
@@ -53,23 +56,23 @@ const reg = () => {
     e.preventDefault()
     let isError = false
 
-    if (!/[а-яА-Я-\s]/g.test(popupIputName.value)) {
-      alert('неправильные данные')
+    if (!/[^а-яА-Я\-\s]/g.test(popupIputName.value)) {
     } else {
       isError = true
+      alert('неправильные данные')
     }
     
-    if(!/[^\w-".!~*']/g.test(popupIputMail.value)) {
-      alert('неправильные данные')
+    if(!/[^\w\-\"\.\!\~\*\'\@]/g.test(popupIputMail.value)) {
     } else {
       isError = true
+      alert('неправильные данные')
     }
 
-    if(!/[\d]/g.test(popupIputPhone.value)) {
-      alert('неправильные данные')
-      console.log('3');
+    if(!/[^\d\(\)\-]/g.test(popupIputPhone.value)) {
+
     } else {
       isError = true
+      alert('неправильные данные')
     }
     if (isError) {
       alert('данные отправлены')
@@ -81,25 +84,30 @@ const reg = () => {
     e.preventDefault()
     let isError = false
 
-    if (!/[а-яА-Я-\s]/g.test(connectIputName.value) && (/[а-яА-Я-\s]/g.test(connectIputMes.value))){
-      alert('неправильные данные')
+    if (!/[^а-яА-Я\-\s]/g.test(connectIputName.value)){
     } else {
       isError = true
-    }
-    
-    if(!/[^\w-".!~*']/g.test(connectIputMail.value)) {
       alert('неправильные данные')
-    } else {
-      isError = true
     }
 
-    if(!/[\d]/g.test(connectIputPhone.value)) {
-      alert('неправильные данные')
+    if(!/[^\w\-\"\.\!\~\*\'\@]/g.test(connectIputMail.value)) {
     } else {
       isError = true
+      alert('неправильные данные')
     }
-  })
 
+    if(!/[^\d\(\)\-]/g.test(connectIputPhone.value)) {
+    } else {
+      isError = true
+      alert('неправильные данные')
+    }
+
+    if (!/[^а-яА-Я\-\s]/g.test(connectIputMes.value)){
+    } else {
+      isError = true
+     alert('неправильные данные')
+    }
+  })    
 }
 
 export default reg
