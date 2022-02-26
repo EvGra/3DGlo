@@ -28,84 +28,121 @@ const reg = () => {
 
   mainForm.addEventListener('submit',  (e) => {
     e.preventDefault()
-    let isError = false
+    let mistakeName
+    let mistakeMail
+    let mistakePhone
+    let arr = []
 
-    if (!/[^а-яА-Я\-\s]/g.test(mainIputText.value)) {
+    if (!/[^а-яА-Я\-\s]/g.test(mainIputText.value)) { 
+      mistakeName = ''
+      arr.push(mistakeName)
     } else {
-      isError = true
-      alert('неправильные данные')
-      console.log('1');
+      mistakeName = 'некорректные данные в имени ' 
+      arr.push(mistakeName)
     }
     
-    if(!/[^\w\-\"\.\!\~\*\'\@]/g.test(mainIputMail.value)) {
+    if(!/[^\w\-\"\.\!\~\*\'\@]/g.test(mainIputMail.value)) { 
+      mistakeMail = ''
+      arr.push(mistakeMail)
     } else {
-      isError = true
-      alert('неправильные данные')
-      console.log('2');
+      mistakeMail = 'некорректные данные в почтовом адресе '
+      arr.push(mistakeMail)
     }
 
     if(!/[^\d\(\)\-]/g.test(mainIputPhone.value)) {
+      mistakePhone = ''
+      arr.push(mistakePhone)
     } else {
-      isError = true
-      alert('неправильные данные')
-      console.log(3);
+      mistakePhone = 'некорректные данные в номере телефона '
+      arr.push(mistakePhone)
+    }
+
+    if (arr.join('') != ''){
+    alert(arr.join(''))
     }
   })
 
   popupForm.addEventListener('submit',  (e) => {
     e.preventDefault()
-    let isError = false
+    let isError = false    
+    let mistakeName
+    let mistakeMail
+    let mistakePhone
+    let arr =[]
 
-    if (!/[^а-яА-Я\-\s]/g.test(popupIputName.value)) {
+    if (!/[^а-яА-Я\-\s]/g.test(popupIputName.value)) { mistakeName = ''
+      arr.push(mistakeName)
     } else {
+      mistakeName = 'некорректные данные в имени ' 
+      arr.push(mistakeName)
       isError = true
-      alert('неправильные данные')
     }
     
-    if(!/[^\w\-\"\.\!\~\*\'\@]/g.test(popupIputMail.value)) {
+    if(!/[^\w\-\"\.\!\~\*\'\@]/g.test(popupIputMail.value)) { 
+      mistakeMail = ''
+      arr.push(mistakeMail)
     } else {
+      mistakeMail = 'некорректные данные в почтовом адресе '
+      arr.push(mistakeMail)
       isError = true
-      alert('неправильные данные')
     }
 
     if(!/[^\d\(\)\-]/g.test(popupIputPhone.value)) {
-
+      mistakePhone = ''
+      arr.push(mistakePhone)
     } else {
+      mistakePhone = 'некорректные данные в номере телефона '
+      arr.push(mistakePhone)
       isError = true
-      alert('неправильные данные')
     }
     if (isError) {
-      alert('данные отправлены')
+      alert(mistakeName, mistakeMail, mistakePhone)
       modal.style.display = 'none'
     }
   })
 
   connectForm.addEventListener('submit',  (e) => {
     e.preventDefault()
-    let isError = false
-
+    let mistakeName
+    let mistakeMail
+    let mistakePhone
+    let mistakeMes
+    let arr = []
+    
     if (!/[^а-яА-Я\-\s]/g.test(connectIputName.value)){
+      mistakeName = ''
+      arr.push(mistakeName)
     } else {
-      isError = true
-      alert('неправильные данные')
+      mistakeName = 'некорректные данные в имени ' 
+      arr.push(mistakeName)
     }
 
     if(!/[^\w\-\"\.\!\~\*\'\@]/g.test(connectIputMail.value)) {
+      mistakeMail = ''
+      arr.push(mistakeMail)
     } else {
-      isError = true
-      alert('неправильные данные')
+      mistakeMail = 'некорректные данные в почтовом адресе '
+      arr.push(mistakeMail)
     }
 
     if(!/[^\d\(\)\-]/g.test(connectIputPhone.value)) {
+      mistakePhone = ''
+      arr.push(mistakePhone)
     } else {
-      isError = true
-      alert('неправильные данные')
+      mistakePhone = 'некорректные данные в номере телефона '
+      arr.push(mistakePhone)
     }
 
     if (!/[^а-яА-Я\-\s]/g.test(connectIputMes.value)){
+      mistakeMes = ''
+      arr.push(mistakeMes)
     } else {
-      isError = true
-     alert('неправильные данные')
+      mistakeMes = 'некорректные данные в сообщении'
+      arr.push(mistakeMes)
+    }
+
+    if (arr.join('') != ''){
+    alert(arr.join(''))
     }
   })    
 }
