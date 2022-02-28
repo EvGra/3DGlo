@@ -1,7 +1,6 @@
 const modal = () => {
   const modal = document.querySelector('.popup-content')
   const buttons = document.querySelectorAll('.popup-btn')
-  const closeBtn = modal.querySelector('.popup-close')
 
   let count = 50
   let id
@@ -28,9 +27,12 @@ const modal = () => {
     })
   })
 
-  closeBtn.addEventListener('click', () => {
-    document.querySelector('.popup').style.display = 'none'
+   document.querySelector('.popup').addEventListener('click', (e) => {
+    if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+      document.querySelector('.popup').style.display = 'none'
+    }
   })
+
 }
 
 export default modal

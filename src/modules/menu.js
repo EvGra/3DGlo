@@ -1,8 +1,6 @@
 const menu = () => {
-  const menuBtn = document.querySelector('.menu')
+  const body = document.querySelector('body')
   const menu = document.querySelector('menu')
-  const closeBtn = menu.querySelector('.close-btn')
-  const menuItems = menu.querySelectorAll('ul>li>a')
 
   const handleMenu = () => {
     if (document.documentElement.clientWidth > 768) {
@@ -11,17 +9,24 @@ const menu = () => {
       menu.style.transform = 'translateX(-100%)'
     }
   }
-  menuBtn.addEventListener('click', () => {
-    if (document.documentElement.clientWidth > 768) {
+
+  body.addEventListener('click', (e) => {
+    if (menu.classList.contains('active-menu')) {
+      if (e.target.closest('.active-menu')) {
+        if (e.target.closest('.close-btn')) {
         handleMenu()
+        } else if (e.target.matches('ul>li>a')) {
+          handleMenu()
+        }
       } else {
-        menu.style.transform = 'translateX(100%)'
+        handleMenu()
       }
+    } else {
+      if (e.target.closest('.menu')) {
+        handleMenu()
+      }
+    } 
   })
-
-  closeBtn.addEventListener('click', handleMenu)
-
-  menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu))
 }
 
 export default menu
