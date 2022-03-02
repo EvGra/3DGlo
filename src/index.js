@@ -5,6 +5,7 @@ import scroll from './modules/scroll'
 import reg from './modules/reg'
 import tabs from './modules/tabs'
 import slider from './modules/slider'
+import calc from './modules/calc'
 
 timer('28 february 2022')
 menu()
@@ -13,3 +14,4 @@ scroll()
 reg()
 tabs()
 slider()
+calc()
