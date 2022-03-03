@@ -14,6 +14,10 @@ const calc = (price = 100) => {
     let calcCountValue = 1
     let calcDayValue = 1
 
+    if (calcTypeValue == 0 || calcSquereValue == 0) {
+      total.textContent = 0
+    }
+
     if (calcCount.value > 1) {
       calcCountValue += calcCount.value / 10
     }
@@ -28,11 +32,9 @@ const calc = (price = 100) => {
       totalValue = price * calcTypeValue * calcSquereValue * calcCountValue * calcDayValue
 
     const animation = () => {
-      const time = 100
-      const step = 1
+      const step = 5
 
       let input = +total.textContent
-      let t = Math.round(time / totalValue)
 
       let interval = setInterval(() => {
 
@@ -46,7 +48,7 @@ const calc = (price = 100) => {
           clearInterval(interval)
         }
         total.textContent = input
-      }, t)
+      }, 0)
     }
 
     animation()
