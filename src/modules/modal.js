@@ -1,20 +1,8 @@
+import { animation } from "./helpers"
+
 const modal = () => {
   const modal = document.querySelector('.popup-content')
   const buttons = document.querySelectorAll('.popup-btn')
-
-  let count = 50
-  let id
-
-  const animationAdd = () => {
-    count--
-    id = requestAnimationFrame(animationAdd)
-    if (count >= 0) {
-      modal.style.marginLeft = count +'%'
-    } else {
-      cancelAnimationFrame(id)
-      count = 50
-    }
-  }
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -22,7 +10,15 @@ const modal = () => {
       modal.style.transform = 'translateX(0%)'
       
       if (document.documentElement.clientWidth > 768) {
-        animationAdd()
+        animation({
+          duration: 1000,
+          timing(timeFraction) {
+            return timeFraction;
+          },
+          draw(progress) {
+            modal.style.marginLeft = (1 / progress) +'%'
+          }
+        })
       }
     })
   })

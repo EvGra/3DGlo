@@ -1,3 +1,5 @@
+import { animation } from "./helpers"
+
 const calc = (price = 100) => {
   const calcBlock = document.querySelector('.calc-block')
   const calcType = document.querySelector('.calc-type')
@@ -31,27 +33,24 @@ const calc = (price = 100) => {
     if (calcType.value && calcSquere.value) {
       totalValue = price * calcTypeValue * calcSquereValue * calcCountValue * calcDayValue
 
-    const animation = () => {
-      const step = 5
+      animation({
+        duration: 1000,
+        timing(timeFraction) {
+          return timeFraction;
+        },
+        draw(progress) {
+          const step = 5
+          let input = +total.textContent
 
-      let input = +total.textContent
+          if (input < totalValue) {
+            input += step
+          } else if (input > totalValue) {
+            input -= step
+          }
 
-      let interval = setInterval(() => {
-
-        if (input < totalValue) {
-          input += step
-        } else if (input > totalValue) {
-          input -= step
+          total.textContent = input
         }
-
-        else if (input == totalValue) {
-          clearInterval(interval)
-        }
-        total.textContent = input
-      }, 0)
-    }
-
-    animation()
+      })
     } else {
       totalValue = 0
     }
