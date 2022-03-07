@@ -23,6 +23,8 @@ const slider = () => {
 
   const dot = document.querySelectorAll('.dot')
 
+  dot[0].classList.add('dot-active')
+  
   const autoSlide = () => {
     prevSlide(slides, currentSlide, 'portfolio-item-active')
     prevSlide(dot, currentSlide, 'dot-active')
