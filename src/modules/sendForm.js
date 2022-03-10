@@ -1,7 +1,6 @@
 const sendForm = ({ formId, someElem = [] }) => {
   const form = document.getElementById(formId)
   const statusBlock = document.createElement('div')
-  const loadText = 'Загрузка...'
   const errorText = 'Ошибка...'
   const successText = 'Спасибо. С вами свяжется наш менеджер'
 
@@ -63,6 +62,11 @@ const sendForm = ({ formId, someElem = [] }) => {
         formElements.forEach(input => {
           input.value = ''
         })
+
+        setTimeout(() => {
+          statusBlock.textContent = ''
+          document.querySelector('.popup').style.display = 'none'
+        }, 3000)
       })
       .catch(error => {
         statusBlock.textContent = errorText
