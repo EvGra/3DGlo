@@ -39,7 +39,7 @@ const sendForm = ({ formId, someElem = [] }) => {
     statusBlock.innerHTML = '<div class="loadingio-spinner-ellipsis-qrw96lub2b">' + '<div class="ldio-85jm1ypyas6">' + '<div></div>' + '<div></div>' + '<div></div>' + '<div></div>' + '<div></div>' + '</div>' + '</div>'
 
     statusBlock.style = 'color: white'
-    // statusBlock.append = new Spinner({color:'#fff', lines: 12}).spin(statusBlock);
+  
     form.append(statusBlock)
 
     formData.forEach((val, key) => {
@@ -93,7 +93,5 @@ const sendForm = ({ formId, someElem = [] }) => {
     console.log(error.message);
   }
 }
-
-
 
 export default sendForm
