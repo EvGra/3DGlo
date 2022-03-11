@@ -34,21 +34,36 @@ const calc = (price = 100) => {
       totalValue = price * calcTypeValue * calcSquereValue * calcCountValue * calcDayValue
 
       animation({
-        duration: 1000,
+        duration: 0,
         timing(timeFraction) {
           return timeFraction;
         },
-        draw(progress) {
-          const step = 5
+        draw() {
+          const step = 20
+
           let input = +total.textContent
 
-          if (input < totalValue) {
-            input += step
-          } else if (input > totalValue) {
-            input -= step
-          }
+          let interval = setInterval(() => {
 
-          total.textContent = input
+            if (input < totalValue) {
+              if (totalValue%step != 0) {
+                  input = input + step + totalValue%step
+                } else {
+                  input += step
+                }
+            } else if (input > totalValue) {
+              if (totalValue%step != 0) {
+                  input = input - step - totalValue%step
+                } else {
+                  input -= step
+                }
+            }
+
+            else if (input == totalValue) {
+              clearInterval(interval)
+            }
+            total.textContent = input
+          }, 0)
         }
       })
     } else {

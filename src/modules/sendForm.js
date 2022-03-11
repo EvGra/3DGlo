@@ -88,8 +88,10 @@ const sendForm = ({ formId, someElem = [] }) => {
          if (!/[^а-яА-Я\d\-\s\,\.]/g.test(mes.value)) {
           submitForm()
          }
-        } else {
+        } else if ( (name.value.length >= 2) && (mail.value.length != '') && (phone.value.length <= 16) && (phone.value.length >= 5)){
           submitForm()
+        } else {
+          alert('Данные не валидны')
         }
       }
     })
